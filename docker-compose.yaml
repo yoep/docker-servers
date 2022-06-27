@@ -1,0 +1,13 @@
+version: '3'
+services:
+  direwolf:
+    build:
+      context: direwolf/.
+    ports:
+      - "25565:25565"
+    environment:
+      - JAVA_MEMORY_LIMIT=8192
+    volumes:
+      - ${PWD}/server.properties:/direwolf/server.properties
+      - ${PWD}/backups:/direwolf/backups
+      - ${PWD}/world:/direwolf/world
