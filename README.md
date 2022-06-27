@@ -28,5 +28,15 @@ docker compose up [SERVICE] --detach --build
 
 ## Data
 
-Most of the server data directories will be mounted to the service directory
+Most of the server data will be mounted to the service directory which is started
 for easy access.
+
+This can always be changed in within the `docker-compose.yaml` file.
+
+## Logs
+
+If you want to access the logs of the server, use the following command:
+
+```shell
+docker compose logs -f [SERVICE]
+```
