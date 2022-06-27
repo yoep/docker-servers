@@ -8,6 +8,6 @@ services:
     environment:
       - JAVA_MEMORY_LIMIT=8192
     volumes:
-      - ${PWD}/server.properties:/direwolf/server.properties
-      - ${PWD}/backups:/direwolf/backups
-      - ${PWD}/world:/direwolf/world
+      - ${PWD}/direwolf/server.properties:/direwolf/server.properties
+      - ${PWD}/direwolf/backups:/direwolf/backups
+      - ${PWD}/direwolf/world:/direwolf/world
