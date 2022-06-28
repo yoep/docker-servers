@@ -7,7 +7,7 @@ Various docker game servers which are not present within the [OpenSourceLAN/game
 The `docker-compose.yaml` file contains all servers which can be started.
 To run a specific server, use the following command:
 
-```yaml
+```shell
 docker compose up [SERVICE] --detach
 ```
 
@@ -16,13 +16,13 @@ docker compose up [SERVICE] --detach
 If an update is available, you need to stop the docker container and run 
 the following command.
 
-```yaml
+```shell
 docker compose build [SERVICE] --no-cache --pull
 ```
 
 or rebuild and startup in the same command:
 
-```yaml
+```shell
 docker compose up [SERVICE] --detach --build
 ```
 

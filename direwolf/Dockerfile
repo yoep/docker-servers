@@ -13,7 +13,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Run the installer
-RUN ./installer 95 2225 --noscript --nojava --integrityupdate true --auto
+RUN ./installer 95 --latest --noscript --nojava --integrityupdate true --auto
 
 # Add the server script
 ADD start-server.sh .
