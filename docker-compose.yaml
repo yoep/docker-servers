@@ -11,3 +11,5 @@ services:
       - ${PWD}/direwolf/server.properties:/direwolf/server.properties
       - ${PWD}/direwolf/backups:/direwolf/backups
       - ${PWD}/direwolf/world:/direwolf/world
+    tty: true
+    stdin_open: true
