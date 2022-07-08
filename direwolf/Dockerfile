@@ -8,7 +8,7 @@ WORKDIR /direwolf
 # Download the installer
 RUN apt-get update && \
     apt-get install -y wget && \
-    wget -O installer https://api.modpacks.ch/public/modpack/95/2228/server/linux && \
+    wget -O installer https://api.modpacks.ch/public/modpack/95/2233/server/linux && \
     chmod +x installer && \
     rm -rf /var/lib/apt/lists/*
 
