@@ -16,4 +16,4 @@ fi
 
 echo "Auto agreement to the Mojang EULA available at https://account.mojang.com/documents/minecraft_eula"
 echo "eula=true" > eula.txt
-java -javaagent:log4jfix/Log4jPatcher-1.0.0.jar -XX:+UnlockExperimentalVMOptions -Xmx${JAVA_MEMORY_LIMIT}M -Xms${JAVA_MEMORY_REQUEST}M @user_jvm_args.txt @libraries/net/minecraftforge/forge/1.18.2-40.1.54/unix_args.txt nogui
+java -javaagent:log4jfix/Log4jPatcher-1.0.0.jar -XX:+UnlockExperimentalVMOptions -Xmx${JAVA_MEMORY_LIMIT}M -Xms${JAVA_MEMORY_REQUEST}M @user_jvm_args.txt @libraries/net/minecraftforge/forge/1.18.2-40.1.67/unix_args.txt nogui
