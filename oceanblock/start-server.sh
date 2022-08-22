@@ -1,5 +1,5 @@
-
 #!/bin/bash
+
 if ! grep -q "eula=true" eula.txt; then
     echo "Do you agree to the Mojang EULA available at https://account.mojang.com/documents/minecraft_eula ?"
     read -N 1 -p "[y/n] " EULA
