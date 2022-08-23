@@ -17,5 +17,6 @@ RUN ./installer 95 --latest --noscript --nojava --integrityupdate true --auto
 
 # Add the server script
 ADD start-server.sh .
+RUN chmod +x start-server.sh
 
 ENTRYPOINT ./start-server.sh

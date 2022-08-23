@@ -1,4 +1,4 @@
-FROM openjdk:17-slim
+FROM openjdk:11-slim
 
 ENV JAVA_MEMORY_LIMIT=6144
 ENV JAVA_MEMORY_REQUEST=4096
@@ -17,5 +17,6 @@ RUN ./installer 91 --latest --noscript --nojava --integrityupdate true --auto
 
 # Add the server script
 ADD start-server.sh .
+RUN chmod +x start-server.sh
 
 ENTRYPOINT ./start-server.sh
