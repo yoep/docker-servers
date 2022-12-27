@@ -12,8 +12,4 @@ if [ -z "${SERVER_WORLD}" ]; then
   exit 1;
 fi
 
-"${SERVER_DIR}/valheim_server.x86_64" -name "${SERVER_NAME}" -savedir "/opt/valheim/data/" -port 2456 -nographics -batchmode -world "${SERVER_WORLD}" -password "${SERVER_PASSWORD}" -public 1 &
-valheim_server_pid=$!
-echo "Valheim server PID: ${valheim_server_pid=$!}"
-tail --pid=$valheim_server_pid -f /dev/null
-echo "Valheim server with PID $valheim_server_pid stopped"
+"${SERVER_DIR}/valheim_server.x86_64" -name "${SERVER_NAME}" -savedir "/opt/valheim/data/" -port 2456 -nographics -batchmode -world "${SERVER_WORLD}" -password "${SERVER_PASSWORD}" -public 1
