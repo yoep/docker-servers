@@ -1,7 +1,7 @@
 #!/bin/bash
 export templdpath=$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
-export SteamAppID=892970
+export SteamAppId=892970
 
 if [ -z "${SERVER_NAME}" ]; then
   echo "Missing SERVER_NAME env var";
@@ -12,5 +12,8 @@ if [ -z "${SERVER_WORLD}" ]; then
   exit 1;
 fi
 
-"${SERVER_DIR}/valheim_server.x86_64" -name "${SERVER_NAME}" -port 2456 -nographics -batchmode -world "${SERVER_WORLD}" -password "${SERVER_PASSWORD}" -public 1
-export LD_LIBRARY_PATH=$templdpath
+"${SERVER_DIR}/valheim_server.x86_64" -name "${SERVER_NAME}" -savedir "/opt/valheim/data/" -port 2456 -nographics -batchmode -world "${SERVER_WORLD}" -password "${SERVER_PASSWORD}" -public 1 &
+valheim_server_pid=$!
+echo "Valheim server PID: ${valheim_server_pid=$!}"
+tail --pid=$valheim_server_pid -f /dev/null
+echo "Valheim server with PID $valheim_server_pid stopped"

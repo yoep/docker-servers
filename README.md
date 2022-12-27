@@ -11,6 +11,15 @@ To run a specific server, use the following command:
 docker compose up [SERVICE] --detach
 ```
 
+### Local server config
+
+If you want to add server options to the docker compose without modifying the git tracked file,
+add a new file called `docker-server.yaml` and launch it as follows:
+
+```shell
+docker compose -f docker-compose.yaml -f docker-server.yaml up [SERVICE] --detach
+```
+
 ### Update a server/docker image
 
 If an update is available, you need to stop the docker container and run 
