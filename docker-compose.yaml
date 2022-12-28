@@ -28,3 +28,21 @@ services:
     tty: true
     stdin_open: true
     restart: on-failure
+  valheim:
+    build:
+      context: valheim/.
+    cap_add:
+      - sys_nice
+    ports:
+      - "2456-2457:2456-2457/udp"
+    environment:
+      - SERVER_NAME=
+      - SERVER_WORLD=
+      - SERVER_PASSWORD=
+    volumes:
+      - ${PWD}/valheim/config:/opt/valheim/config
+      - ${PWD}/valheim/data:/opt/valheim/data
+    tty: true
+    stdin_open: true
+    restart: on-failure
+    stop_grace_period: 1m
