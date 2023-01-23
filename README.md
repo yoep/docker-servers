@@ -20,6 +20,13 @@ add a new file called `docker-server.yaml` and launch it as follows:
 docker compose -f docker-compose.yaml -f docker-server.yaml up [SERVICE] --detach
 ```
 
+Some servers however require initial command arguments on the first start.
+This can be resolved by using `run` instead of `up` as follows:
+
+```shell
+docker compose -f docker-compose.yaml -f docker-server.yaml run [SERVICE] --detach
+```
+
 ### Update a server/docker image
 
 If an update is available, you need to stop the docker container and run 

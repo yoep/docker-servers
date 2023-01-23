@@ -46,3 +46,17 @@ services:
     stdin_open: true
     restart: on-failure
     stop_grace_period: 1m
+  terraria:
+    container_name: terraria
+    image: ryshe/terraria:vanilla-latest
+    ports:
+      - "7777:7777"
+    environment:
+      - WORLD_FILENAME=World.wld
+      - CONFIGPATH=/root/.local/share/Terraria/Worlds/
+    volumes:
+      - ${PWD}/terraria/world/:/root/.local/share/Terraria/Worlds
+    tty: true
+    stdin_open: true
+    restart: on-failure
+    stop_grace_period: 1m
