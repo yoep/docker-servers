@@ -1,5 +1,6 @@
 **/server.properties
 **/world
 **/backups
+**/data
 
 docker-server.yaml
