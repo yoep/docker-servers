@@ -63,6 +63,8 @@ services:
   satisfactory:
     build:
       context: satisfactory/.
+    cap_add:
+      - sys_nice
     ports:
       - "15000:15000/udp"
       - "15777:15777/udp"
@@ -73,3 +75,10 @@ services:
     stdin_open: true
     restart: on-failure
     stop_grace_period: 1m
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
