@@ -71,6 +71,7 @@ services:
       - "7777:7777/udp"
     volumes:
       - ${PWD}/satisfactory/data:/home/steam/.config/Epic/FactoryGame/Saved/SaveGames/server
+      - ${PWD}/satisfactory/config:/opt/satisfactory/FactoryGame/Saved/Config
     tty: true
     stdin_open: true
     restart: on-failure
