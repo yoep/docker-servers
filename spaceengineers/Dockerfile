@@ -9,7 +9,7 @@ RUN apt-get update &&\
 
 RUN useradd -m steam
 RUN mkdir -p ${INSTALL_LOCATION} &&\
-    chown steam:root ${INSTALL_LOCATION}
+    chown $(whoami):root ${INSTALL_LOCATION}
 
 #USER steam
 VOLUME ${HOME}/.steam
