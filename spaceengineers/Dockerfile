@@ -8,6 +8,9 @@ RUN apt-get update &&\
     apt-get install -y wine winetricks cabextract winbind wget xvfb screen &&\
     apt-get clean
 
+# Update winetricks to the latest version
+RUN winetricks --self-update
+
 RUN useradd -m steam
 RUN mkdir -p ${INSTALL_LOCATION} &&\
     chown $(whoami):root ${INSTALL_LOCATION}
@@ -22,7 +25,8 @@ RUN mkdir -p ${HOME}/.steam/sdk64 &&\
 
 # Install Wine Mono
 RUN wget https://dl.winehq.org/wine/wine-mono/6.4.0/wine-mono-6.4.0-x86.msi &&\
-    WINEPREFIX="${WINE_LOCATION}" wine64 msiexec /i wine-mono-6.4.0-x86.msi
+    WINEPREFIX="${WINE_LOCATION}" wine64 msiexec /i wine-mono-6.4.0-x86.msi &&\
+    rm wine-mono-6.4.0-x86.msi
 
 # Install the space engineers dedicated server
 RUN dedicated_server_location="${WINE_LOCATION}/drive_c/users/$(whoami)/Desktop/spaceengineers" &&\
