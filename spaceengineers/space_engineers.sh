@@ -4,7 +4,7 @@
 # **************************
 # Installation config
 install_location=${INSTALL_LOCATION}
-world_name=CelestialFrontier
+world_name=${WORLD_NAME}
 # Wine config
 wine_location=${WINE_LOCATION}
 # Screen config
@@ -107,9 +107,10 @@ setup) #run only once.
   #install dependencies
   install_dependency msxml4 "MSXML4"
   install_dependency dotnet461 ".NET Framework 4.6.1"
-  install_dependency dotnet472 ".NET Framework"
+  install_dependency dotnet472 ".NET Framework 4.7.2"
   install_dependency vcrun2013 "Visual 2013 C++"
   install_dependency vcrun2017 "Visual 2017 C++"
+  install_dependency vcrun2019 "Visual 2019 C++"
   install_dependency corefonts "COREFONTS"
   install_dependency faudio "FAUDIO"
   # The IP binding seems to go wrong sometimes with the default installed winhttp lib from wine
