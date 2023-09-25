@@ -35,7 +35,10 @@ RUN mkdir -p ${HOME}/.steam/sdk64 &&\
     ./space_engineers.sh setup
 
 # Install wine dependencies
-RUN Xvfb :1 -screen 0 1024x768x24 & DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q dotnet48 vcrun2013 vcrun2019
+RUN Xvfb :1 -screen 0 1024x768x24 &\
+    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q d3dcompiler_47 vcrun2013 vcrun2017 &&\
+    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q --force vcrun2019 &&\
+    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q --force dotnet48
 
 # Install Wine Mono
 RUN wget https://dl.winehq.org/wine/wine-mono/7.4.0/wine-mono-7.4.0-x86.msi &&\
