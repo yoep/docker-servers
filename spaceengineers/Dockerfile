@@ -4,11 +4,19 @@ ENV INSTALL_LOCATION=/opt/space_engineers
 ENV WINE_LOCATION=${INSTALL_LOCATION}/.wine64
 ENV WORLD_NAME=CelestialFrontier
 
+# Install dependencies
 RUN apt-get update &&\
-    apt-get install -y wine cabextract winbind wget xvfb libgl1-mesa-dri &&\
+    apt-get install -y cabextract winbind wget xvfb libgl1-mesa-dri &&\
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install the latest winetricks version
+# Install the latest version of wine
+RUN wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key &&\
+    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources &&\
+    apt-get update &&\
+    apt-get install --install-recommends -y winehq-stable &&\
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install the latest version of winetricks
 RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&\
     chmod +x winetricks &&\
     mv -v winetricks /usr/bin/
@@ -27,12 +35,12 @@ RUN mkdir -p ${HOME}/.steam/sdk64 &&\
     ./space_engineers.sh setup
 
 # Install wine dependencies
-RUN Xvfb :1 -screen 0 1024x768x24 & DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q vcrun2019
+RUN Xvfb :1 -screen 0 1024x768x24 & DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q dotnet48 vcrun2019
 
 # Install Wine Mono
-RUN wget https://dl.winehq.org/wine/wine-mono/6.4.0/wine-mono-6.4.0-x86.msi &&\
-    WINEPREFIX="${WINE_LOCATION}" wine64 msiexec /i wine-mono-6.4.0-x86.msi &&\
-    rm wine-mono-6.4.0-x86.msi
+RUN wget https://dl.winehq.org/wine/wine-mono/7.4.0/wine-mono-7.4.0-x86.msi &&\
+    WINEPREFIX="${WINE_LOCATION}" wine64 msiexec /i wine-mono-7.4.0-x86.msi &&\
+    rm wine-mono-7.4.0-x86.msi
 
 # Install the space engineers dedicated server
 RUN dedicated_server_location="${WINE_LOCATION}/drive_c/users/$(whoami)/Desktop/spaceengineers" &&\
