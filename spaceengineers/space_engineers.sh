@@ -106,8 +106,6 @@ setup) #run only once.
   show_spinner "Configuring WINE" $!
   #install dependencies
   install_dependency msxml4 "MSXML4"
-  install_dependency vcrun2013 "Visual 2013 C++"
-  install_dependency vcrun2017 "Visual 2017 C++"
   install_dependency corefonts "COREFONTS"
   install_dependency faudio "FAUDIO"
   # The IP binding seems to go wrong sometimes with the default installed winhttp lib from wine
@@ -124,24 +122,5 @@ setup) #run only once.
   echo ""
   echo "Setup complete. Please place your server's .cfg file in ${install_location}/config/SpaceEngineers-Dedicated.cfg.
   You'll need to edit it and change the <LoadWorld /> part to read: <LoadWorld>C:\users\\${whoami}\Application Data\SpaceEngineersDedicated\Saves\\${world_name}</LoadWorld>."
-  ;;
-backupworld) #put an entry in your crontab pointing to this script with the first argument being 'backupworld'.
-  logstampworld=$(date +%s)
-  cd ${install_location}/config
-  cp -rf Saves/${world_name} backups/world-$logstampworld
-  ;;
-*)
-  if ps ax | grep -v grep | grep $procname >/dev/null; then
-    echo "$screen_name is running, not starting"
-    exit
-  else
-    if [[ ! -f ${install_location} ]]; then
-      echo "Space Engineers Dedicated Server is not installed"
-      exit 1
-    fi
-
-    echo "$screen_name is not running, starting"
-    screen -dmS ${screen_name} -t ${screen_name} $0 start
-  fi
   ;;
 esac
