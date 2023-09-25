@@ -38,6 +38,8 @@ RUN wget https://dl.winehq.org/wine/wine-mono/6.4.0/wine-mono-6.4.0-x86.msi &&\
 RUN dedicated_server_location="${WINE_LOCATION}/drive_c/users/$(whoami)/Desktop/spaceengineers" &&\
     steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "${dedicated_server_location}" +login anonymous +app_update 298740 -verify +quit || true
 
+EXPOSE 8080
+EXPOSE 8766
 EXPOSE 27016
 
 ENTRYPOINT ["bash", "-c"]
