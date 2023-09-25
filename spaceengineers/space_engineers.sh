@@ -106,11 +106,9 @@ setup) #run only once.
   show_spinner "Configuring WINE" $!
   #install dependencies
   install_dependency msxml4 "MSXML4"
-  install_dependency dotnet461 ".NET Framework 4.6.1"
   install_dependency dotnet472 ".NET Framework 4.7.2"
   install_dependency vcrun2013 "Visual 2013 C++"
   install_dependency vcrun2017 "Visual 2017 C++"
-  install_dependency vcrun2019 "Visual 2019 C++"
   install_dependency corefonts "COREFONTS"
   install_dependency faudio "FAUDIO"
   # The IP binding seems to go wrong sometimes with the default installed winhttp lib from wine
