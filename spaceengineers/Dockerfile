@@ -36,7 +36,7 @@ RUN mkdir -p ${HOME}/.steam/sdk64 &&\
 
 # Install wine dependencies
 RUN Xvfb :1 -screen 0 1024x768x24 &\
-    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q d3dcompiler_47 vcrun2013 vcrun2017 &&\
+    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q d3dcompiler_47 vcrun6 vcrun2013 vcrun2017 &&\
     DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q --force vcrun2019 &&\
     DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q --force dotnet48
 
