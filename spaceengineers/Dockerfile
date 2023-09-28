@@ -13,7 +13,7 @@ RUN apt-get update &&\
 RUN wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key &&\
     wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources &&\
     apt-get update &&\
-    apt-get install --install-recommends -y winehq-stable &&\
+    apt-get install --install-recommends -y winehq-stable wine-stable-i386 wine-stable-amd64 wine-stable &&\
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install the latest version of winetricks
@@ -27,7 +27,7 @@ RUN useradd -m steam
 #USER steam
 VOLUME ${HOME}/.steam
 
-COPY space_engineers.sh ./
+COPY start_server.sh ./
 RUN mkdir -p ${HOME}/.steam/sdk64 &&\
     ln -s ${HOME}/.local/share/Steam/steamcmd/linux64/steamclient.so ${HOME}/.steam/sdk64/steamclient.so
 
@@ -40,17 +40,9 @@ RUN mkdir -p ${INSTALL_LOCATION} &&\
     ln -s ${INSTALL_LOCATION} ${WINE_LOCATION}/drive_c/users/$(whoami)/Desktop/spaceengineers &&\
     ln -s ${INSTALL_LOCATION}/config ${WINE_LOCATION}/drive_c/users/$(whoami)/Application\ Data/SpaceEngineersDedicated
 
-# Install Wine Mono
-#RUN wget https://dl.winehq.org/wine/wine-mono/7.4.0/wine-mono-7.4.0-x86.msi &&\
-#    WINEPREFIX="${WINE_LOCATION}" wine64 msiexec /i wine-mono-7.4.0-x86.msi &&\
-#    rm wine-mono-7.4.0-x86.msi
-
 # Install wine dependencies
-RUN Xvfb :1 -screen 0 1024x768x24 &\
-    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks sound=disabled &&\
-    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks corefonts &&\
-    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q vcrun2019 &&\
-    DISPLAY=:1 WINEPREFIX="${WINE_LOCATION}" winetricks -q --force dotnet48
+COPY winetricks.sh ./
+RUN chmod +x winetricks.sh && ./winetricks.sh
 
 # Install the space engineers dedicated server
 RUN dedicated_server_location="${WINE_LOCATION}/drive_c/users/$(whoami)/Desktop/spaceengineers" &&\
@@ -60,5 +52,4 @@ EXPOSE 8080
 EXPOSE 8766
 EXPOSE 27016
 
-ENTRYPOINT ["bash", "-c"]
-CMD ["xvfb-run ${HOME}/space_engineers.sh"]
+ENTRYPOINT ["${HOME}/start_server.sh"]

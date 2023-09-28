@@ -77,15 +77,17 @@ services:
     restart: on-failure
     stop_grace_period: 1m
   spaceengineers:
-    build:
-      context: spaceengineers/.
-    init: true
+    image: devidian/spaceengineers:latest
     ports:
       - "8080:8080"
       - "8766:8766"
       - "27016:27016/udp"
+    environment:
+      - WINEDEBUG=-all
     volumes:
-      - ${PWD}/spaceengineers/config:/opt/space_engineers/config
+      - ${PWD}/spaceengineers/plugins:/appdata/space-engineers/plugins
+      - ${PWD}/spaceengineers/instances:/appdata/space-engineers/instances
+      - ${PWD}/spaceengineers/SpaceEngineersDedicated:/appdata/space-engineers/SpaceEngineersDedicated
     tty: true
     stdin_open: true
     restart: on-failure
