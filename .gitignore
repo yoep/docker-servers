@@ -3,4 +3,6 @@
 **/backups
 **/data
 
+spaceengineers/SpaceEngineersDedicated/*
+
 docker-server.yaml
