@@ -77,7 +77,8 @@ services:
     restart: on-failure
     stop_grace_period: 1m
   spaceengineers:
-    image: devidian/spaceengineers:latest
+    build:
+      context: spaceengineers/.
     ports:
       - "8080:8080"
       - "8766:8766"
