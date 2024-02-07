@@ -93,3 +93,15 @@ services:
     stdin_open: true
     restart: on-failure
     stop_grace_period: 1m
+  wreckfest:
+    build:
+      context: wreckfest/.
+    ports:
+      - "27015-27016:27015-27016"
+      - "33540:33540"
+    volumes:
+      - ${PWD}/wreckfest/config:/opt/wreckfest/config
+    tty: true
+    stdin_open: true
+    restart: on-failure
+    stop_grace_period: 1m
