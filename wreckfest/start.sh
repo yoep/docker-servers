@@ -15,5 +15,10 @@ else
   echo "Using existing config file";
 fi
 
+if [[ ! -r ${CONFIG_FILE_LOCATION} ]]; then
+  echo "Insufficient permission for config file ${CONFIG_FILE_LOCATION}" >&2;
+  exit 1;
+fi
+
 sleep 5
-xvfb-run exec wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
+wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
