@@ -20,4 +20,4 @@ if [[ ! -r ${CONFIG_FILE_LOCATION} ]]; then
 fi
 
 sleep 5
-WINEDEBUG=+all wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
+WINEDEBUG=+warn,+fixme,+err wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
