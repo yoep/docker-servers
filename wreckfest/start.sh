@@ -20,4 +20,5 @@ if [[ ! -r ${CONFIG_FILE_LOCATION} ]]; then
 fi
 
 sleep 5
-WINEDEBUG=+warn,+fixme,+err xvfb-run exec wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
+wineboot --update
+WINEDEBUG=+warn,+fixme,+err xvfb-run -a exec wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}

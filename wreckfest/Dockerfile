@@ -6,7 +6,7 @@ ENV HOME=/home/steam
 
 # Install dependencies
 RUN apt-get update &&\
-    apt-get install -y xvfb x11-utils wget gnupg software-properties-common &&\
+    apt-get install -y xvfb x11-utils wget gnupg software-properties-common cabextract &&\
     apt-get clean
 
 # Install wine
