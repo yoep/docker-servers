@@ -14,7 +14,7 @@ RUN dpkg --add-architecture i386 &&\
     wget -qO - https://dl.winehq.org/wine-builds/winehq.key | apt-key add - &&\
     add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main' &&\
     apt-get update &&\
-    apt-get install --install-recommends -y winehq-stable &&\
+    apt-get install --install-recommends -y winehq-stable winbind &&\
     apt-get clean
 
 # Install winetricks
