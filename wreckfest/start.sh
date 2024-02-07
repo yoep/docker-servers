@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export WINEARCH=win32
-export WINEDEBUG=-all
 export WINEPREFIX=${HOME}/.wreckfest
 export CONFIG_FILE=server_config.cfg
 export CONFIG_FILE_LOCATION="${SERVER_DIR}/config/${CONFIG_FILE}"
@@ -21,4 +20,4 @@ if [[ ! -r ${CONFIG_FILE_LOCATION} ]]; then
 fi
 
 sleep 5
-wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
+WINEDEBUG=+all wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
