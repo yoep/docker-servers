@@ -6,7 +6,7 @@ ENV HOME=/home/steam
 
 # Install dependencies
 RUN apt-get update &&\
-    apt-get install -y xvfb x11-utils wget gnupg software-properties-common cabextract &&\
+    apt-get install -y xvfb wget gnupg software-properties-common cabextract &&\
     apt-get clean
 
 # Install wine
@@ -14,7 +14,7 @@ RUN dpkg --add-architecture i386 &&\
     wget -qO - https://dl.winehq.org/wine-builds/winehq.key | apt-key add - &&\
     add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main' &&\
     apt-get update &&\
-    apt-get install --install-recommends -y winehq-stable winbind &&\
+    apt-get install --install-recommends -y winehq-staging winbind &&\
     apt-get clean
 
 # Install winetricks
