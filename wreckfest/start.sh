@@ -19,7 +19,8 @@ if [[ ! -r ${CONFIG_FILE_LOCATION} ]]; then
   exit 1;
 fi
 
+winetricks winhttp
 winetricks ole32
 
 sleep 5
-tini -- WINEDEBUG=+warn,+fixme,+err xvfb-run -a wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
+WINEDEBUG=+warn,+fixme,+err wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}

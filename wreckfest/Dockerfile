@@ -44,5 +44,4 @@ RUN steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "${SERVER_D
 ADD start.sh ${SERVER_DIR}/start.sh
 
 WORKDIR ${SERVER_DIR}
-ENTRYPOINT ["bash", "-c"]
-CMD ["./start.sh"]
+ENTRYPOINT ["tini", "--", "xvfb-run", "-a", "./start.sh"]
