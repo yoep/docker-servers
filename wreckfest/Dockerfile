@@ -43,5 +43,10 @@ RUN steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "${SERVER_D
 # Add startup script
 ADD start.sh ${SERVER_DIR}/start.sh
 
+ENV WINEARCH=win32
+ENV WINEPREFIX=${HOME}/.wreckfest
+ENV CONFIG_FILE=server_config.cfg
+ENV CONFIG_FILE_LOCATION="config/${CONFIG_FILE}"
+
 WORKDIR ${SERVER_DIR}
 ENTRYPOINT ["tini", "--", "xvfb-run", "-a", "./start.sh"]
