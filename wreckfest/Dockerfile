@@ -6,7 +6,7 @@ ENV HOME=/home/steam
 
 # Install dependencies
 RUN apt-get update &&\
-    apt-get install -y xvfb wget gnupg software-properties-common cabextract &&\
+    apt-get install -y xvfb x11vnc wget gnupg software-properties-common cabextract &&\
     apt-get clean
 
 # Install wine
@@ -30,6 +30,9 @@ RUN mkdir -p ${SERVER_DIR} &&\
 
 USER steam
 ENV DISPLAY :99
+
+WORKDIR ${HOME}
+RUN winecfg
 
 # Install wreckfest server
 RUN steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "${SERVER_DIR}" +login anonymous +app_update ${STEAMCMD_APP_ID} validate +quit &&\
