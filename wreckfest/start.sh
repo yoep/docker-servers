@@ -14,6 +14,7 @@ if [[ ! -r ${CONFIG_FILE_LOCATION} ]]; then
   exit 1;
 fi
 
+winetricks -q win10
 winetricks winhttp
 winetricks ole32
 
