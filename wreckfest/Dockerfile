@@ -34,10 +34,6 @@ RUN mkdir -p ${SERVER_DIR} &&\
     chown steam:root ${SERVER_DIR}
 
 USER steam
-ENV DISPLAY :99
-
-WORKDIR ${HOME}
-RUN DISPLAY=:99 xvfb-run winecfg
 
 # Install wreckfest server
 RUN steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "${SERVER_DIR}" +login anonymous +app_update ${STEAMCMD_APP_ID} validate +quit &&\
