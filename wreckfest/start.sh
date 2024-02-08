@@ -20,8 +20,6 @@ if [[ ! -r ${CONFIG_FILE_LOCATION} ]]; then
 fi
 
 winetricks ole32
-winetricks settings dlloverrides "mscoree,mshtml="
 
 sleep 5
-wineboot --update
-WINEDEBUG=+warn,+fixme,+err xvfb-run exec wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
+tini -- WINEDEBUG=+warn,+fixme,+err xvfb-run exec wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}
