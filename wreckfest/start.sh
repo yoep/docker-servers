@@ -16,7 +16,6 @@ fi
 
 winetricks -q win10
 winetricks winhttp
-winetricks ole32
 
 sleep 5
 WINEDEBUG=+warn,+fixme,+err wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}

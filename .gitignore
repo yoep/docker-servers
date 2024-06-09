@@ -6,4 +6,9 @@
 
 spaceengineers/SpaceEngineersDedicated/*
 
+valheim/data/*
+!valheim/data/.gitkeep
+valheim/plugins/*
+!valheim/plugins/.gitkeep
+
 docker-server.yaml
