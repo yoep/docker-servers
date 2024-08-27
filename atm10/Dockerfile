@@ -11,7 +11,8 @@ RUN apt-get update &&\
     apt-get install -y wget unzip &&\
     apt-get clean &&\
     rm -rf /var/lib/apt/lists/* &&\
-    wget -o atm10.zip "${SERVER_FILE_URI}" &&\
+    wget -O atm10.zip "${SERVER_FILE_URI}" &&\
+    chmod +x startserver.sh &&\
     unzip atm10.zip &&\
     rm -f atm10.zip
 
