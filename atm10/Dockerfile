@@ -16,6 +16,8 @@ RUN apt-get update &&\
 RUN wget -O atm10.zip "${SERVER_FILE_URI}" &&\
     unzip atm10.zip &&\
     rm -f atm10.zip &&\
+    mv Server-Files-0.40/* . &&\
+    rm -rf Server-Files-0.40 &&\
     chmod +x startserver.sh
 
 # Write the EULA
