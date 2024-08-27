@@ -106,3 +106,17 @@ services:
     stdin_open: true
     restart: on-failure
     stop_grace_period: 1m
+  atm10:
+    build:
+      context: atm10/.
+    ports:
+      - "25565:25565"
+    environment:
+      - JAVA_MEMORY_LIMIT=8192
+    volumes:
+      - ${PWD}/atm10/server.properties:/atm10/server.properties
+      - ${PWD}/atm10/backups:/atm10/backups
+      - ${PWD}/atm10/world:/atm10/world
+    tty: true
+    stdin_open: true
+    restart: on-failure
