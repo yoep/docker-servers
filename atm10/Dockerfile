@@ -6,15 +6,17 @@ ENV SERVER_FILE_URI="https://mediafilez.forgecdn.net/files/5666/880/Server-Files
 
 WORKDIR /atm10
 
-# Download the server files & extract
+# Install dependencies
 RUN apt-get update &&\
     apt-get install -y wget unzip &&\
     apt-get clean &&\
-    rm -rf /var/lib/apt/lists/* &&\
-    wget -O atm10.zip "${SERVER_FILE_URI}" &&\
-    chmod +x startserver.sh &&\
+    rm -rf /var/lib/apt/lists/*
+
+# Download the server files & extract in the working dir
+RUN wget -O atm10.zip "${SERVER_FILE_URI}" &&\
     unzip atm10.zip &&\
-    rm -f atm10.zip
+    rm -f atm10.zip &&\
+    chmod +x startserver.sh
 
 # Write the EULA
 RUN echo "true" > eula.txt
