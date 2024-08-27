@@ -21,6 +21,6 @@ RUN wget -O atm10.zip "${SERVER_FILE_URI}" &&\
     chmod +x startserver.sh
 
 # Write the EULA
-RUN echo "true" > eula.txt
+RUN echo "eula=true" > eula.txt
 
 ENTRYPOINT ./startserver.sh
