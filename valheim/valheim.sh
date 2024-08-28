@@ -12,4 +12,6 @@ if [ -z "${SERVER_WORLD}" ]; then
   exit 1;
 fi
 
-"${SERVER_DIR}/valheim_server.x86_64" -name "${SERVER_NAME}" -savedir "/opt/valheim/data" -port 2456 -nographics -batchmode -world "${SERVER_WORLD}" -password "${SERVER_PASSWORD}" -public 1
+echo "--- Switching working dir to ${SERVER_DIR} ---"
+cd "${SERVER_DIR}"
+"./start_server_bepinex.sh"
