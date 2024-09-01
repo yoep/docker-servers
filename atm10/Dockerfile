@@ -2,7 +2,7 @@ FROM openjdk:21-slim
 
 ENV JAVA_MEMORY_LIMIT=6144
 ENV JAVA_MEMORY_REQUEST=4096
-ENV SERVER_FILE_URI="https://mediafilez.forgecdn.net/files/5666/880/Server-Files-0.40.zip"
+ENV SERVER_FILE_URI="https://mediafilez.forgecdn.net/files/5682/90/Server-Files-0.43.zip"
 
 WORKDIR /atm10
 
@@ -16,8 +16,8 @@ RUN apt-get update &&\
 RUN wget -O atm10.zip "${SERVER_FILE_URI}" &&\
     unzip atm10.zip &&\
     rm -f atm10.zip &&\
-    mv Server-Files-0.40/* . &&\
-    rm -rf Server-Files-0.40 &&\
+    mv Server-Files-0.43/* . &&\
+    rm -rf Server-Files-0.43 &&\
     chmod +x startserver.sh
 
 # Write the EULA
