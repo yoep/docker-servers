@@ -120,3 +120,4 @@ services:
     tty: true
     stdin_open: true
     restart: on-failure
+    stop_grace_period: 1m
