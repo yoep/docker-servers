@@ -4,6 +4,12 @@
 **/data
 **/config
 
+atm10/data/
+
+direwolf/backups/
+direwolf/world/
+direwolf/server.properties
+
 spaceengineers/SpaceEngineersDedicated/*
 
 valheim/data/*
