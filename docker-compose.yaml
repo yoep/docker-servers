@@ -114,7 +114,7 @@ services:
       EULA: "TRUE"
       TYPE: AUTO_CURSEFORGE
       CF_API_KEY: ''
-      CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-10"
+      CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/5685381"
     volumes:
       - ${PWD}/atm10/data:/data
     healthcheck:
