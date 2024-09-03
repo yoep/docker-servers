@@ -112,9 +112,15 @@ services:
     environment:
       MAX_MEMORY: 8G
       EULA: "TRUE"
-      TYPE: AUTO_CURSEFORGE
+      TYPE: NEOFORGE
       CF_API_KEY: ''
-      CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/5685381"
+      CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-10"
+      CF_FORCE_SYNCHRONIZE: "true"
+      CF_EXCLUDE_MODS: | # remove problematic client side mods
+        lighty
+        986380
+      VERSION: 1.21
+      NEOFORGE_VERSION: 21.0.167
     volumes:
       - ${PWD}/atm10/data:/data
     healthcheck:
