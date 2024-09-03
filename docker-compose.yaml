@@ -120,7 +120,7 @@ services:
         lighty
         986380
       VERSION: 1.21
-      NEOFORGE_VERSION: 21.0.167
+      NEOFORGE_VERSION: 21.1.34
     volumes:
       - ${PWD}/atm10/data:/data
     healthcheck:
