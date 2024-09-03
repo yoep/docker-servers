@@ -119,6 +119,7 @@ services:
       CF_EXCLUDE_MODS: | # remove problematic client side mods
         lighty
         986380
+        sodium
       VERSION: 1.21
       NEOFORGE_VERSION: 21.1.34
     volumes:
