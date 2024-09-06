@@ -112,14 +112,11 @@ services:
     environment:
       MAX_MEMORY: 8G
       EULA: "TRUE"
-      TYPE: NEOFORGE
+      TYPE: AUTO_CURSEFORGE
       CF_API_KEY: ''
       CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-10"
       CF_FORCE_SYNCHRONIZE: "true"
-      CF_EXCLUDE_MODS: | # remove problematic client side mods
-        lighty
-        986380
-        sodium
+      CF_EXCLUDE_MODS: 986380,520110,394468,447673
       VERSION: 1.21
       NEOFORGE_VERSION: 21.1.37
     volumes:
