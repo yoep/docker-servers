@@ -116,7 +116,7 @@ services:
       CF_API_KEY: ''
       CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-10"
       CF_FORCE_SYNCHRONIZE: "true"
-      CF_EXCLUDE_MODS: 986380,520110,394468,447673
+      CF_EXCLUDE_MODS: 986380,394468,447673
       VERSION: 1.21
       NEOFORGE_VERSION: 21.1.37
     volumes:
