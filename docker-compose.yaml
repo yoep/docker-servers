@@ -140,7 +140,7 @@ services:
       CF_FORCE_SYNCHRONIZE: "true"
       CF_EXCLUDE_MODS: 986380,394468,447673
       VERSION: 1.21
-      NEOFORGE_VERSION: 21.1.37
+      NEOFORGE_VERSION: 21.1.42
     volumes:
       - ${PWD}/atm10/data:/data
     healthcheck:
