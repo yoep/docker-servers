@@ -68,7 +68,7 @@ services:
     ports:
       - "15000:15000/udp"
       - "15777:15777/udp"
-      - "7777:7777/udp"
+      - "7777:7777"
     volumes:
       - ${PWD}/satisfactory/data:/home/steam/.config/Epic/FactoryGame/Saved/SaveGames
       - ${PWD}/satisfactory/config:/opt/satisfactory/FactoryGame/Saved/Config
