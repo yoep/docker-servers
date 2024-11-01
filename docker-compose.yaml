@@ -153,3 +153,24 @@ services:
     stdin_open: true
     restart: on-failure
     stop_grace_period: 1m
+  arma3:
+    image: ghcr.io/brettmayson/arma3server/arma3server
+    ports:
+      - 2302:2302/udp
+      - 2303:2303/udp
+      - 2304:2304/udp
+      - 2305:2305/udp
+      - 2306:2306/udp
+    environment:
+      ARMA_CONFIG: main.cfg
+      STEAM_USER: ""
+      STEAM_PASSWORD: ""
+    volumes:
+      - ${PWD}/arma3/configs:/arma3/configs
+      - ${PWD}/arma3/mods:/arma3/mods
+      - ${PWD}/arma3/mpmissions:/arma3/mpmissions
+      - ${PWD}/arma3/servermods:/arma3/servermods
+    tty: true
+    stdin_open: true
+    restart: on-failure
+    stop_grace_period: 1m
