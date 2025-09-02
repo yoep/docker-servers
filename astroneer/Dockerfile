@@ -1,17 +1,13 @@
 FROM steamcmd/steamcmd:ubuntu-24
 
-ENV STEAMCMD_APP_ID=361580
-ENV SERVER_DIR=/opt/wreckfest
+ENV STEAMCMD_APP_ID=728470
 ENV HOME=/home/steam
+ENV SERVER_DIR=/opt/astroneer
 
 # Install dependencies
 RUN apt-get update &&\
-    apt-get install -y x11vnc wget gnupg software-properties-common cabextract &&\
+    apt-get install -y x11vnc wget software-properties-common cabextract &&\
     apt-get clean
-
-# Add tini
-ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /usr/bin/tini
-RUN chmod +x /usr/bin/tini
 
 # Install wine
 RUN DEBIAN_FRONTEND=noninteractive \
@@ -35,22 +31,14 @@ RUN mkdir -p ${SERVER_DIR} &&\
 
 USER steam
 
-# Install wreckfest server
+# Install the dedicated server
 RUN steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "${SERVER_DIR}" +login anonymous +app_update ${STEAMCMD_APP_ID} validate +quit &&\
     mkdir -p ${HOME}/.steam/sdk64 &&\
     ln -s ${HOME}/.local/share/Steam/steamcmd/linux64/steamclient.so ${HOME}/.steam/sdk64/steamclient.so
 
-# Add startup script
-ADD start.sh ${SERVER_DIR}/start.sh
+ENV WINEPREFIX=${HOME}/.astroneer
 
-ENV WINEARCH=win32
-ENV WINEPREFIX=${HOME}/.wreckfest
-ENV CONFIG_FILE=server_config.cfg
-ENV CONFIG_FILE_LOCATION="config/${CONFIG_FILE}"
+# Setup wine
+RUN winetricks -q win10
 
-# Setup wine/winetricks
-RUN winetricks -q win10 &&\
-    winetricks winhttp
-
-WORKDIR ${SERVER_DIR}
-ENTRYPOINT ["tini", "--", "xvfb-run", "-a", "./start.sh"]
+ENTRYPOINT ["xvfb-run", "wine", "/opt/astroneer/AstroServer.exe"]

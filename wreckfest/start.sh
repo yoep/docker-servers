@@ -14,8 +14,5 @@ if [[ ! -r ${CONFIG_FILE_LOCATION} ]]; then
   exit 1;
 fi
 
-winetricks -q win10
-winetricks winhttp
-
 sleep 5
 WINEDEBUG=+warn,+fixme,+err wine Wreckfest.exe -s server_config=${CONFIG_FILE_LOCATION}

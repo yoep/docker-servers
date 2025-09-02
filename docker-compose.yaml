@@ -205,3 +205,14 @@ services:
     stdin_open: true
     restart: on-failure
     stop_grace_period: 1m
+  astroneer:
+    build:
+      context: astroneer/.
+    ports:
+      - "8777:8777"
+    volumes:
+      - ${PWD}/astroneer/config:/opt/astroneer/Astro/Saved/Config/WindowsServer
+    tty: true
+    stdin_open: true
+    restart: on-failure
+    stop_grace_period: 1m
