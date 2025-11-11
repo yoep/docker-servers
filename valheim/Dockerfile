@@ -9,7 +9,7 @@ RUN apt-get update &&\
     mkdir -p ${SERVER_DIR}
 
 # Install mod support
-ADD denikson-BepInExPack_Valheim-5.4.2202.zip /tmp/BepInExPack.zip
+ADD denikson-BepInExPack_Valheim-5.4.2333.zip /tmp/BepInExPack.zip
 RUN unzip /tmp/BepInExPack.zip -d /tmp &&\
     mv -v /tmp/BepInExPack_Valheim/* ${SERVER_DIR}/ &&\
     chmod +x ${SERVER_DIR}/start_server_bepinex.sh &&\
