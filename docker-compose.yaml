@@ -39,8 +39,8 @@ services:
       - SERVER_WORLD=
       - SERVER_PASSWORD=
     volumes:
-      - ${PWD}/valheim/config:/opt/valheim/config
       - ${PWD}/valheim/data:/opt/valheim/data
+      - ${PWD}/valheim/config:/opt/valheim/BepInEx/config
       - ${PWD}/valheim/plugins:/opt/valheim/BepInEx/plugins/
     tty: true
     stdin_open: true
