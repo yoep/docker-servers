@@ -217,14 +217,16 @@ services:
     restart: on-failure
     stop_grace_period: 1m
   enshrouded:
-    image: mornedhels/enshrouded-server
+    image: mornedhels/enshrouded-server:latest
     restart: unless-stopped
     stop_grace_period: 90s
     ports:
-      - "15637:15637"
+      - "15637:15637/udp"
     environment:
       - SERVER_NAME=Enshrouded
       - UPDATE_CRON=*/30 * * * *
       - BACKUP_MAX_COUNT=5
+      - PUID=4711
+      - PGID=4711
     volumes:
       - ${PWD}/enshrouded:/opt/enshrouded
