@@ -226,6 +226,7 @@ services:
       - "15637:15637/udp"
     environment:
       - SERVER_NAME=Enshrouded
+      - SERVER_ENABLE_TEXT_CHAT=true
       - UPDATE_CRON=*/30 * * * *
       - BACKUP_MAX_COUNT=5
       - PUID=4711
