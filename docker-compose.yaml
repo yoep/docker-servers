@@ -218,7 +218,12 @@ services:
     stop_grace_period: 1m
   enshrouded:
     image: mornedhels/enshrouded-server
+    restart: unless-stopped
+    stop_grace_period: 90s
     ports:
       - "15637:15637"
     environment:
       - SERVER_NAME=Enshrouded
+      - UPDATE_CRON=*/30 * * * *
+    volumes:
+      - ${PWD}/enshrouded:/opt/enshrouded
