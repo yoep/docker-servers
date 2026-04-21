@@ -218,6 +218,8 @@ services:
     stop_grace_period: 1m
   enshrouded:
     image: mornedhels/enshrouded-server:latest
+    container_name: enshrouded
+    hostname: enshrouded
     restart: unless-stopped
     stop_grace_period: 90s
     ports:
