@@ -225,5 +225,6 @@ services:
     environment:
       - SERVER_NAME=Enshrouded
       - UPDATE_CRON=*/30 * * * *
+      - BACKUP_MAX_COUNT=5
     volumes:
       - ${PWD}/enshrouded:/opt/enshrouded
