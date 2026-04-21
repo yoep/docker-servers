@@ -216,3 +216,9 @@ services:
     stdin_open: true
     restart: on-failure
     stop_grace_period: 1m
+  enshrouded:
+    image: mornedhels/enshrouded-server
+    ports:
+      - "15637:15637"
+    environment:
+      - SERVER_NAME=Enshrouded
