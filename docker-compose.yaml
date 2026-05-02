@@ -232,6 +232,4 @@ services:
       - PUID=4711
       - PGID=4711
     volumes:
-      - ${PWD}/enshrouded/savegame:/opt/enshrouded/server/savegame
-      - ${PWD}/enshrouded/logs:/opt/enshrouded/server/logs
-      - ${PWD}/enshrouded/enshrouded_server.json:/opt/enshrouded/server/enshrouded_server.json
+      - ${PWD}/enshrouded:/opt/enshrouded
